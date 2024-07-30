@@ -53,8 +53,10 @@ const Subscribe = ({ open, handleClose, flight = null }) => {
           { flightId: flight, contact: creds, method: method, recepientToken: token }
         );
         console.log(data);
+        handleClose();
     } catch (error) {
       console.log(error);
+      handleClose()
     }
   };
   return (

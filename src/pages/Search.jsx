@@ -73,23 +73,22 @@ const Search = () => {
     setFlightId(e.target.value);
   };
 
+
   const search = async () => {
-    setLoading(true);
+    const flight = flightId && flightId !== "" ? `6E ${flightId}` : null;
+    const params = { flightId: flight, scheduledDeparture: date ? data : null, lastData: data ? JSON.stringify(data):null };
     try {
-      const flight =
-        flightId != null && flightId != "" ? `6E ${flightId}` : null;
       const { data } = await axios.get(
         `${import.meta.env.VITE_APP_SERVER}flights/`,
-        { params: { flightId: flight, scheduledDeparture: date } }
+        { params }
       );
-      setData(data.data);
-      setLoading(false);
+      setData(data.data)
     } catch (error) {
-      console.log(error);
-      setLoading(false);
     }
   };
-
+  useEffect(() => {
+    search()
+  }, [data])
   const clear = () => {
     setFlightId("");
     setFrom("");
@@ -325,7 +324,7 @@ const Search = () => {
             flexDirection={"column"}
             gap={2}
           >
-            {data && data.length != 0 ? (
+            {(data && data.length != 0) ? (
               data.map((entry, i) => (
                 <Accordion style={{ background: "white" }} key={i}>
                   <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
