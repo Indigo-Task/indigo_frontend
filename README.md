@@ -26,7 +26,7 @@ npm install
 ```
 3. Configure Firebase:
 
-Create a Firebase project and add your configuration to a .env file in the root directory. Example .env file:
+Add your configuration to a .env file in the root directory. Example .env file:
 ```
 VITE_FIREBASE_API_KEY=your_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
