@@ -84,6 +84,7 @@ const Search = () => {
       );
       setData(data.data)
     } catch (error) {
+      toast.error(error.response.data.message)
     }
   };
   useEffect(() => {
@@ -249,7 +250,7 @@ const Search = () => {
               <DatePicker
                 // label="Date"
                 id="flight-date"
-                defaultValue={dayjs(new Date())}
+                // defaultValue={dayjs(new Date())}
                 value={dayjs(date)}
                 onAccept={(e) => setDate(new Date(e).toDateString())}
                 onChange={(e) => setDate(new Date(e).toDateString())}

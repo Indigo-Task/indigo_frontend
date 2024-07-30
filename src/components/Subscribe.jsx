@@ -18,6 +18,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { getFirebaseToken } from "../utils/firebase";
+import { toast } from "react-toastify";
 const Input = styled(OutlinedInput)(({ theme }) => ({
   "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
     display: "none",
@@ -55,7 +56,7 @@ const Subscribe = ({ open, handleClose, flight = null }) => {
         console.log(data);
         handleClose();
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message)
       handleClose()
     }
   };
@@ -126,11 +127,7 @@ const Subscribe = ({ open, handleClose, flight = null }) => {
               onChange={handleChange}
             />
           </FormControl>
-          <FormControlLabel
-            required
-            control={<Checkbox />}
-            label="Allow Push Notifications"
-          />
+          <Typography variant="caption" >Click "Notify" to receive push notifications.</Typography>
         </Box>
       </DialogContent>
       <DialogActions>

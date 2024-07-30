@@ -207,7 +207,7 @@ const Home = () => {
                   label="Date"
                   slotProps={{ textField: { variant: "standard" } }}
                   id="flight-date"
-                  defaultValue={dayjs(new Date())}
+                  // defaultValue={dayjs(new Date())}
                   onAccept={(e) => setDate(new Date(e).toDateString())}
                   onChange={(e) => setDate(new Date(e).toDateString())}
                   minDate={dayjs(new Date())}
